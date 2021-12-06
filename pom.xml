@@ -19,6 +19,12 @@
     <quarkus.platform.version>2.5.0.Final</quarkus.platform.version>
     <resteasy-jackson2-provider.version>5.0.0.Final</resteasy-jackson2-provider.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <quarkus.container-image.build>true</quarkus.container-image.build>
+    <quarkus.container-image.group></quarkus.container-image.group>
+    <docker.pentaho-registry.host.pull>pnt-docker.repo.orl.eng.hitachivantara.com</docker.pentaho-registry.host.pull>
+    <quarkus.container-image.name>data-management</quarkus.container-image.name>
+    <quarkus.container-image.tag>${project.version}</quarkus.container-image.tag>
+    <quarkus.jib.base-jvm-image>${docker.pentaho-registry.host.pull}/alpine-3-13-6-open-jre-11</quarkus.jib.base-jvm-image>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -78,6 +84,10 @@
       <groupId>software.amazon.awssdk</groupId>
       <artifactId>apache-client</artifactId>
       <version>2.17.93</version>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-container-image-jib</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>

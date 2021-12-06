@@ -1,0 +1,32 @@
+---
+# Data Management SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-management-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 20001
+      targetPort: 8080
+      protocol: TCP
+      name: data-management-port
+  selector:
+    name: data-management
+---
+# Data Management POD
+apiVersion: v1
+kind: Pod
+metadata:
+  name: data-management
+  labels:
+    name: data-management
+spec:
+  containers:
+    - name: data-management
+      image: data-management:1.0.0-SNAPSHOT
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+          name: web
+---
